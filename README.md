@@ -5,5 +5,17 @@ Price Comparison Portal using Semantics API
   An admin portal is developed with the idea of providing a hassle-free login experience for administrators and developers to update api keys and access the SaaS apps within the organization. When the API keys expire, admin can update it via this portal. The CICD apps like Jenkins are accessible via this portal, all these apps are integrated with Okta for a SAML based SSO. Admin can configure and trigger builds to ICompare portal using Jenkins.
   
   - System Architecture
+  
+  ![image](https://user-images.githubusercontent.com/1582196/41491686-9b6fe302-70af-11e8-99c1-26348d19a618.png)
+  
   - Okta AWS Integration
+  
+  ![image](https://user-images.githubusercontent.com/1582196/41491707-c5cedb6c-70af-11e8-8cc8-40c2a4b749c8.png)
+  
+  -Okta Spring Boot Integration
+  
+  ![image](https://user-images.githubusercontent.com/1582196/41491721-db13b4ac-70af-11e8-8b9f-365ce15d150f.png)
+  
+  -Application Screenshots
+  
   
