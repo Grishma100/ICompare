@@ -12,7 +12,7 @@
   
   - System Architecture
   
-  <img src="https://user-images.githubusercontent.com/1582196/41491686-9b6fe302-70af-11e8-99c1-26348d19a618.png" width="500" height="300">
+  <img src="https://user-images.githubusercontent.com/1582196/41491686-9b6fe302-70af-11e8-99c1-26348d19a618.png" width="500" height="500">
   
   - Okta AWS Integration
   
