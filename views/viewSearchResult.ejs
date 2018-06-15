@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Welcome to Ucompare</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/viewSearchResult.css">
+<link href="css/wishlist.css" rel="stylesheet">
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="https://code.angularjs.org/1.5.6/angular.js"></script>
+<!--===============================================================================================-->
+<script src="https://code.angularjs.org/1.5.6/angular-route.js"></script>
+<!--===============================================================================================-->
+<script src="js/viewSearchResults.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      "Apple iPhone",
+      "Amazon fire",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "iPhone 8",
+      "iPhone 8 Plus",
+      "iPhone 10",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Phone",
+      "Ruby",
+      "Samsung",
+      "Shoes"
+    ];
+    $( "#typeahead-input" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!--===============================================================================================-->
+</head>
+<body data-ng-app="viewSearchResultsApp">
+	<div data-ng-controller="searchCtrl">
+    <header id="header">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="logo pull-left">
+              <a href=""><img src="images/home/logo_new.png" alt="" /></a>
+            </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="social-icons pull-right">
+                <div class="nav navbar-nav">
+                  <div>
+                    <a href="/wishlist" class="link-padding"><i class="fa fa-star social-icon-color"></i></a>
+                    <a href="https://www.facebook.com/ICompare-1527133874080140/" target="_blank" class="link-padding"><i class="fa fa-facebook social-icon-color"></i></a>
+                    <a href="https://twitter.com/compare_i" target="_blank" class="link-padding"><i class="fa fa-twitter social-icon-color"></i></a>
+                    <a href="/logout" class="link-padding"><i class="fa fa-unlock social-icon-color"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3">
+            </div>
+          
+            <div class="col-sm-9">
+              <div class="input-group search_box_view pull-right">
+                <input id="typeahead-input" data-provide="typeahead" data-ng-model="searchStr" type="text" placeholder="Search"/>
+                <div class="input-group-btn">
+                        <button type="button" class="btn btn-search btn-info" data-ng-click="searchProductResults()">
+                            <span class="glyphicon glyphicon-search">Search</span>
+                        </button>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+    <section id="cart_items">
+		<div class="container" data-ng-show="isDataPresent">
+					               		 		<div class="alert alert-success" id="success-alert1" style="display: none ">
+	   							<center> <strong> Successfully added the Wishlist</strong></center>
+							</div>
+			<div class="row" data-ng-repeat="data in searchResults">
+				<div class="row">
+					<div class="col-xs-12 col-sm-3 col-md-3">
+						<a href="#"> <img data-ng-src="{{data.images[0]}}" class="img-responsive img-box img-thumbnail">
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-9 col-md-9">
+						<div class="row-content">
+							<div class="list-group-item-heading">
+								<a href="#"> <small ng-model="brand">{{data.brand}}</small></a>
+							</div>
+								<small>As low as <a href="#">$ {{data.price}} </a> </small>
+						</div>
+							
+						<h4>
+							<a href="#" ng-model="name">{{data.name}}</a>
+						</h4>
+						<p>{{data.description}}</p>
+						<div data-ng-repeat="site in data.sitedetails">
+							<div data-ng-show="site.latestoffers.length">
+								<div data-ng-repeat="offers in site.latestoffers">
+                    				<small><a href="{{site.url}}" class="link-padding" target="_blank"><i class="fa fa-shopping-cart link-padding"></i>{{site.name}}</a><span>{{offers.price}}</span></small>
+                    			</div>
+                    		</div>
+               		 	</div>
+               		 	<br/>
+               		 	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#product_view" ng-click="addWishList(data)">Add to Wishlist</button>
+					</div>
+				</div>
+				<hr class="block-div">
+			</div>
+		</div>
+  </section>
+
+  <footer id="footer" data-ng-class="{ 'footer-view1' : !isDataPresent == true, 'footer-view2' : isDataPresent == true}"><!--Footer-->
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="companyinfo">
+              <h2><span>i</span>-compare</h2>
+              <p>Compare price for thousands of items through our search engine</p>
+            </div>
+          </div>
+          <div class="col-sm-7">
+              <div class="row">
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="images/home/iframe1.png" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Compare</p>
+                <h2>Price</h2>
+              </div>
+          </div>
+
+          <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="images/home/iframe2.png" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Fashion</p>
+                <h2>Shopping</h2>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="images/home/iframe3.png" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Office</p>
+                <h2>dresses</h2>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="images/home/iframe4.png" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Sale</p>
+                <h2>Save money</h2>
+              </div>
+            </div>
+
+
+          </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="address">
+              <img src="images/home/map.png" alt="" />
+              <p>SJSU CMPE 282 Project Team, CA, USA</p>
+            </div>
+          </div>
+        </div>
+      </div> <!--end of row 1 -->
+    </div>
+
+     <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <p class="pull-left">Copyright © 2018 iCompare. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+	</div>
+</body>
+</html>
