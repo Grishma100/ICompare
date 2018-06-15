@@ -16,9 +16,9 @@
   
   - Okta AWS Integration
   
-  ![image](https://user-images.githubusercontent.com/1582196/41491707-c5cedb6c-70af-11e8-8cc8-40c2a4b749c8.png)
+   <img src="https://user-images.githubusercontent.com/1582196/41491707-c5cedb6c-70af-11e8-8cc8-40c2a4b749c8.png" width="500" height="300">
   
-  -Okta Spring Boot Integration
+  - Okta Spring Boot Integration
   
   <img src="https://user-images.githubusercontent.com/1582196/41491721-db13b4ac-70af-11e8-8b9f-365ce15d150f.png" width="500" height="300">
   
