@@ -20,7 +20,7 @@
   
   -Okta Spring Boot Integration
   
-  <img src="https://user-images.githubusercontent.com/1582196/41491721-db13b4ac-70af-11e8-8b9f-365ce15d150f.png width="500" height="300">
+  <img src="https://user-images.githubusercontent.com/1582196/41491721-db13b4ac-70af-11e8-8b9f-365ce15d150f.png" width="500" height="300">
   
   - Application Screenshots
 
